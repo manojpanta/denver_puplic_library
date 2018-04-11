@@ -24,7 +24,16 @@ class Library
     @books.sort_by do |book|
       book.author_last_name
     end
+  end
 
+  def find_by_author(author)
+    new_hash = {}
+    @books.each do |book|
+      if book.author_first_name + " " + book.author_last_name == author
+        new_hash[book.title] = book
+      end
+    end
+    new_hash
   end
 
 end

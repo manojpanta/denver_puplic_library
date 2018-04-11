@@ -106,6 +106,32 @@ class LibraryTest < Minitest::Test
   end
 
 
+  def test_it_can_find_boooks_by_author
+    library = Library.new
+
+    charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
+    jane_eyre = charlotte_bronte.add_books("Jane Eyre", "October 16, 1847")
+
+    charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
+    mockingbird = charlotte_bronte.add_books("To Kill a Mockingbird", "July 11, 1960")
+
+    harper_lee  = Author.new({first_name: "Harper", last_name: "Lee"})
+    good_life = harper_lee.add_books("Life's good", "July 11, 1960")
+
+
+    library.add_to_collection(jane_eyre)
+    library.add_to_collection(mockingbird)
+    library.add_to_collection(good_life)
+
+    assert_equal 3, library.books.count
+
+
+    assert_equal 2, library.find_by_author("Charlotte Bronte").count
+    assert_equal 1, library.find_by_author("Harper Lee").count
+
+  end
+
+
 
 
 end
