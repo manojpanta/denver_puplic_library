@@ -1,23 +1,13 @@
 {
   "Unit Tests": {
     "coverage": {
-      "/Users/aleneschlereth/turing/1710/exercises/denver_public_library/test/book_test.rb": [
-        1,
-        null,
-        1,
-        null,
-        null,
-        null
-      ],
-      "/Users/aleneschlereth/turing/1710/exercises/denver_public_library/test/library_test.rb": [
-        1,
-        null,
+      "/Users/Manoj/Turing/1module/projects/denver_puplic_library/lib/book.rb": [
         1,
         null,
         null,
         null
       ]
     },
-    "timestamp": 1508521288
+    "timestamp": 1523459349
   }
 }
