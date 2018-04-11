@@ -11,12 +11,8 @@ class Library
   end
 
   def include?(title)
-    @books.find do |book|
-      if book.title == title
-        true
-      else
-        false
-      end
+    @books.any? do |book|
+      book.title == title
     end
   end
 
@@ -29,7 +25,7 @@ class Library
   def find_by_author(author)
     new_hash = {}
     @books.each do |book|
-      if book.author_first_name + " " + book.author_last_name == author
+      if (book.author_first_name + " " + book.author_last_name) == author
         new_hash[book.title] = book
       end
     end
