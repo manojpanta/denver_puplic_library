@@ -19,8 +19,7 @@ class Author
             :title => title,
             :publication_date => publication_date}
     @books << Book.new(data)
-
-
+    Book.new(data)
   end
 
 end
