@@ -64,6 +64,25 @@ class LibraryTest < Minitest::Test
     assert_equal 2, library.books.count
   end
 
+  def test_it_can_tell_if_a_book_is_in_the_collection
+    library = Library.new
+
+    charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Bronte"})
+    jane_eyre = charlotte_bronte.add_books("Jane Eyre", "October 16, 1847")
+
+    harper_lee  = Author.new({first_name: "Harper", last_name: "Lee"})
+    mockingbird = harper_lee.add_books("To Kill a Mockingbird", "July 11, 1960")
+
+
+    library.add_to_collection(jane_eyre)
+    library.add_to_collection(mockingbird)
+
+    assert library.include?("To Kill a Mockingbird")
+    assert library.include?("Jane Eyre")
+
+    refute library.include?("A Connecticut Yankee in King Arthur's Court")
+  end
+
 
 
 
