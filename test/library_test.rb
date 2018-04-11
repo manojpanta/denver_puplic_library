@@ -83,6 +83,28 @@ class LibraryTest < Minitest::Test
     refute library.include?("A Connecticut Yankee in King Arthur's Court")
   end
 
+  def test_it_can_sort_books_in_alphabetical_order_by_author_last_name
+    library = Library.new
+
+    charlotte_bronte = Author.new({first_name: "Charlotte", last_name: "Acre"})
+    jane_eyre = charlotte_bronte.add_books("Jane Eyre", "October 16, 1847")
+
+    harper_lee  = Author.new({first_name: "Harper", last_name: "Bronte"})
+    mockingbird = harper_lee.add_books("To Kill a Mockingbird", "July 11, 1960")
+
+    harper_lee  = Author.new({first_name: "Harper", last_name: "Ciars"})
+    good_life = harper_lee.add_books("Life's good", "July 11, 1960")
+
+
+    library.add_to_collection(jane_eyre)
+    library.add_to_collection(mockingbird)
+    library.add_to_collection(good_life)
+
+    assert_equal "Jane Eyre",library.card_catalogue.first.title
+    assert_equal "To Kill a Mockingbird",library.card_catalogue[1].title
+    assert_equal "Life's good",library.card_catalogue.last.title
+  end
+
 
 
 
